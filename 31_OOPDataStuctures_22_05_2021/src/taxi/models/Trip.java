@@ -11,6 +11,10 @@ public class Trip {
     // the trip distance in km
     private double distance;
 
+    public List<Passenger> getPassengers() {
+        return passengers;
+    }
+
     public Trip(Driver driver, List<Passenger> passengers, int duration, double distance) {
         this.driver = driver;
         this.passengers = passengers;

@@ -13,20 +13,31 @@ public class BufferedTestStreams {
                      new BufferedWriter(new FileWriter("buffered_sorted.txt", false));) {
 
             List<String> names = new ArrayList<>();
-            String line;
+            String line = "";
 
             while ((line = reader.readLine()) != null) {
-                names.add(line);
+               names.add(line);
             }
 
-            List<String> sortedNames = names.stream()
+            for (String name : names) {
+                System.out.println(name);
+            }
+
+            List<String> sortedNames = names
+                    .stream()
                     .sorted()
                     .collect(Collectors.toList());
 
             for (String name : sortedNames) {
-                writer.write(name + '\n');
+                System.out.println(name);
             }
 
+            for (String name : sortedNames) {
+                writer.write(name + System.lineSeparator());
+            }
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
